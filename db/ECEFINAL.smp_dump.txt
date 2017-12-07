@@ -1,0 +1,9 @@
+
+State Machine - |ECEFINAL|state
+Name state.STATE_Wrong state.STATE_A state.STATE_D state.STATE_C state.STATE_B state.STATE_End 
+state.STATE_End 0 0 0 0 0 0 
+state.STATE_B 0 0 0 0 1 1 
+state.STATE_C 0 0 0 1 0 1 
+state.STATE_D 0 0 1 0 0 1 
+state.STATE_A 0 1 0 0 0 1 
+state.STATE_Wrong 1 0 0 0 0 1 

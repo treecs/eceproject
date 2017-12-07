@@ -1,0 +1,9 @@
+
+State Machine - state
+Name state.state_wrong state.state_a state.state_d state.state_c state.state_b state.state_end 
+state.state_end 0 0 0 0 0 0 
+state.state_b 0 0 0 0 1 1 
+state.state_c 0 0 0 1 0 1 
+state.state_d 0 0 1 0 0 1 
+state.state_a 0 1 0 0 0 1 
+state.state_wrong 1 0 0 0 0 1 
