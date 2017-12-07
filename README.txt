@@ -1,1 +1,1 @@
-It is a ¡°whack a mole¡± gaming project.
+It is a whack a mole gaming project
