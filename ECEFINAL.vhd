@@ -51,7 +51,7 @@ architecture beh of ECEFINAL is
   SIGNAL GRB: STD_LOGIC_VECTOR(2 DOWNTO 0); 
 
 begin
-------------------------------------------
+-----------vga clk (50Mhz to 60Hz)-------------------
 vgaclk:PROCESS (clk)  ---hs = 30 Khz vs = 57hz 
 	VARIABLE i	:	integer range 0 to 799:=0; 
 	VARIABLE j	:	integer range 0 to 79:=0; 
@@ -75,7 +75,7 @@ BEGIN
 	end if; 
 	vga_hs_control <= hs;  
 END PROCESS vgaclk; 
-------------------------------------------------
+-------------vga vertical and horizontal scan---------------------
 vgahs:PROCESS (hs) 
 VARIABLE k	:	integer range 0 to 524:=0; 
 BEGIN 
@@ -93,7 +93,7 @@ if reset = '1' then
 	  end if; 
   vga_vs_control <= vs;  
 END PROCESS vgahs; 
---------------------------------------------------
+-------------vga out put--------------------------------
 vgaout:PROCESS (clk) 
 BEGIN 
 	if clk'event and clk = '1' and vs = '1' and hs ='1' then 
@@ -102,7 +102,10 @@ BEGIN
 		vga_blue_dispaly  <= GRB(0);				
 end if; 
 END PROCESS vgaout;
-------------------------------------------
+-------------------------------------------------------------------------------------
+---it should be able to show some red and black strips on the monitor by vga output---------
+---at 640 x 480 resolution and 60hz refresh rate--------------------------------------
+------------------------------------------------------------------------------------
 Scoplay: process (clk,score)
 BEGIN
 if (clk'event and clk='1') then
@@ -178,7 +181,7 @@ if (clk'event and clk='1') then
 	end if;
 end if;
 end process Scoplay;
------------------------------------------------------
+----------------2 seven segment display control -----------------------------
 Sco: process (clk, score)
 begin
 if (clk'event) and (clk='1') then
@@ -208,7 +211,7 @@ when others=> segment <="00000000000000"; --GG
 end case;
 end if;
 end process Sco;
------------------------------------------
+--------------clock for the whack refresh time--------------------------------
 Prescaler:process (clk)
   begin
   
@@ -222,7 +225,7 @@ Prescaler:process (clk)
       end if;
     end if;
 end process Prescaler;
----------------------------------------------
+--------------controller for the order of the whack and end the game when necessary---------------------------------------
 Button:process (clk, reset)
   begin
     if reset = '1' then
@@ -328,5 +331,5 @@ Button:process (clk, reset)
       end case;
     end if;
   end process Button;
-------------------------------------------------
+------------------------------------------------------------------
 end beh;
